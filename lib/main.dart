@@ -48,6 +48,8 @@ class _HomeState extends State<Home> {
         return FontAwesomeIcons.cloudSunRain;
       } else if (condition.toString().contains("rain")) {
         return FontAwesomeIcons.cloudRain;
+      } else if (condition.toString().contains("cloud")) {
+        return FontAwesomeIcons.cloudSun;
       } else {
         return FontAwesomeIcons.sun;
       }
@@ -57,6 +59,8 @@ class _HomeState extends State<Home> {
         return FontAwesomeIcons.cloudMoonRain;
       } else if (condition.toString().contains("rain")) {
         return FontAwesomeIcons.cloudRain;
+      } else if (condition.toString().contains("cloud")) {
+        return FontAwesomeIcons.cloudMoon;
       } else {
         return FontAwesomeIcons.moon;
       }
