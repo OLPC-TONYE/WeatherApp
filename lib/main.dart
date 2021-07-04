@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
       this.weatherIcon = results["current"]["condition"]["icon"];
       this.locationCountry = results["location"]["country"];
       this.locationName = results["location"]["name"];
-      this.time = results["location"]["localtime"];
+      this.time = results["location"]["localtime_epoch"];
     });
   }
 
@@ -64,8 +64,8 @@ class _HomeState extends State<Home> {
   }
 
   String timeDecode(dynamic time) {
-    var currentTime = DateTime.parse(time);
-    if (currentTime.hour < 5 && currentTime.hour > 17) {
+    var currentTime = DateTime.now();
+    if (currentTime.hour >= 5 && currentTime.hour <= 17) {
       return "Day";
     } else {
       return "Night";
@@ -115,6 +115,10 @@ class _HomeState extends State<Home> {
                   locationCountry != null
                       ? locationCountry.toString()
                       : "Loading...",
+                  style: TextStyle(fontSize: 25.0, color: Colors.white),
+                ),
+                Text(
+                  condition != null ? condition.toString() : "Loading...",
                   style: TextStyle(fontSize: 25.0, color: Colors.white),
                 ),
               ],
