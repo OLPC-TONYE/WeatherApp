@@ -22,21 +22,26 @@ class _HomeState extends State<Home> {
   var temp;
   var locationCountry;
   var locationName;
+  var forecastCondition;
+  var is_day;
+  var pressure;
   var condition;
   var time;
-  var weatherIcon;
 
   Future getWeather() async {
     http.Response response = await http.get(
-        "https://api.weatherapi.com/v1/current.json?key=ba98ac910ebc42a4b79191541210207&q=auto:ip");
+        "https://api.weatherapi.com/v1/forecast.json?key=ba98ac910ebc42a4b79191541210207&q=auto:ip");
     var results = jsonDecode(response.body);
     setState(() {
       this.temp = results["current"]["temp_c"];
       this.condition = results["current"]["condition"]["text"];
-      this.weatherIcon = results["current"]["condition"]["icon"];
+      this.forecastCondition =
+          results["forecast"]["forecastday"][0]["day"]["condition"]["text"];
+      this.is_day = results["current"]["is_day"];
       this.locationCountry = results["location"]["country"];
       this.locationName = results["location"]["name"];
       this.time = results["location"]["localtime_epoch"];
+      print(forecastCondition);
     });
   }
 
@@ -107,24 +112,57 @@ class _HomeState extends State<Home> {
                 Text(
                   temp != null ? temp.toString() + "\u00B0C" : "Loading...",
                   style: TextStyle(
-                      fontSize: 68.0,
+                      fontSize: 60.0,
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
                 Text(
                   locationName != null ? locationName.toString() : "Loading...",
-                  style: TextStyle(fontSize: 25.0, color: Colors.white),
+                  style: TextStyle(fontSize: 20.0, color: Colors.white),
                 ),
                 Text(
                   locationCountry != null
                       ? locationCountry.toString()
                       : "Loading...",
-                  style: TextStyle(fontSize: 25.0, color: Colors.white),
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      fontFamily: "Roboto",
+                      color: Colors.white),
                 ),
                 Text(
                   condition != null ? condition.toString() : "Loading...",
                   style: TextStyle(fontSize: 25.0, color: Colors.white),
                 ),
+                Padding(
+                  padding: EdgeInsets.only(top: 10.0, left: 35, right: 35),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              "Forecast",
+                              style: TextStyle(
+                                  fontSize: 30.0,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black),
+                            ),
+                            FaIcon(
+                              decideIcon(forecastCondition),
+                              size: 70,
+                              color: Colors.blueAccent,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
           ),
