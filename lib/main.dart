@@ -118,9 +118,18 @@ class _HomeState extends State<Home> {
                       color: Colors.white),
                 ),
                 Text(
-                  locationName != null ? locationName.toString() : "Loading...",
+                  condition != null ? condition.toString() : "Loading...",
                   style: TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 22.0,
+                      fontFamily: "OtomanopeeOne",
+                      color: Colors.white),
+                ),
+                Text(
+                  locationName != null
+                      ? locationName.toString() + ", "
+                      : "Loading...",
+                  style: TextStyle(
+                      fontSize: 21.0,
                       fontFamily: "OtomanopeeOne",
                       color: Colors.white),
                 ),
@@ -130,13 +139,6 @@ class _HomeState extends State<Home> {
                       : "Loading...",
                   style: TextStyle(
                       fontSize: 20.0,
-                      fontFamily: "OtomanopeeOne",
-                      color: Colors.white),
-                ),
-                Text(
-                  condition != null ? condition.toString() : "Loading...",
-                  style: TextStyle(
-                      fontSize: 22.0,
                       fontFamily: "OtomanopeeOne",
                       color: Colors.white),
                 ),
