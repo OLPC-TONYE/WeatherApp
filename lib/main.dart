@@ -113,12 +113,16 @@ class _HomeState extends State<Home> {
                   temp != null ? temp.toString() + "\u00B0C" : "Loading...",
                   style: TextStyle(
                       fontSize: 60.0,
+                      fontFamily: "OtomanopeeOne",
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
                 Text(
                   locationName != null ? locationName.toString() : "Loading...",
-                  style: TextStyle(fontSize: 20.0, color: Colors.white),
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      fontFamily: "OtomanopeeOne",
+                      color: Colors.white),
                 ),
                 Text(
                   locationCountry != null
@@ -126,7 +130,7 @@ class _HomeState extends State<Home> {
                       : "Loading...",
                   style: TextStyle(
                       fontSize: 20.0,
-                      fontFamily: "Roboto",
+                      fontFamily: "OtomanopeeOne",
                       color: Colors.white),
                 ),
                 Text(
@@ -149,7 +153,7 @@ class _HomeState extends State<Home> {
                               "Forecast",
                               style: TextStyle(
                                   fontSize: 30.0,
-                                  fontWeight: FontWeight.w500,
+                                  fontFamily: "OtomanopeeOne",
                                   color: Colors.black),
                             ),
                             FaIcon(
