@@ -109,10 +109,7 @@ class _HomeState extends State<Home> {
                 ),
                 Text(
                   locationName != null ? locationName.toString() : "Loading...",
-                  style: TextStyle(
-                      fontSize: 25.0,
-                      fontFamily: "serif-sans",
-                      color: Colors.white),
+                  style: TextStyle(fontSize: 25.0, color: Colors.white),
                 ),
                 Text(
                   locationCountry != null
